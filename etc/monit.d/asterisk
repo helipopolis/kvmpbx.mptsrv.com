@@ -1,0 +1,13 @@
+check process mysqld with pidfile /var/run/mariadb/mariadb.pid
+start program = "/usr/bin/systemctl start mariadb"
+stop program = "/usr/bin/systemctl stop mariadb"
+
+check process asterisk with pidfile /var/run/asterisk/asterisk.pid
+start program = "/sbin/service asterisk start"
+stop program = "/sbin/service asterisk stop"
+depends on mysqld
+
+check process aster-event-watch with pidfile /var/run/aster_eventwatcher_app.pid
+start program = "/root/aster_eventwatching_daemon --host=10.1.1.81 --user=callmanager --secret=asterisk --dbhost=localhost --dbuser=asterisk --dbsecret=asterisk start"
+stop program = "/root/aster_eventwatching_daemon --host=10.1.1.81 --user=callmanager --secret=asterisk --dbhost=localhost --dbuser=asterisk --dbsecret=asterisk stop"
+depends on asterisk

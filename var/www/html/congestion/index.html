@@ -1,0 +1,107 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=UTF-8">
+    <script type="text/javascript" src="jquery.js"></script>
+    <title>Текущие разговоры</title>
+    <style>
+        table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 11px;
+        text-align: left;
+        }
+        th {
+        font-size: 11px;
+        font-weight: normal;
+        background: #b9c9fe;
+        border-top: 4px solid #aabcfe;
+        color: #039;
+        }
+        td {
+        color: #669;
+        border-width: 1px;
+        }
+         tr:hover td {
+        background: PaleGoldenrod;
+        cursor: pointer;
+        }
+        .ext-view-off { display: none; }
+        /* marker for extended view */
+        .ext-view-m { background: green; }
+        .yellow { background: yellow; }
+
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        /* Change the link color to #111 (black) on hover */
+        li a:hover {
+          background-color: #111;
+        }
+        
+        body {
+          margin: 0px;
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: 14px;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+    </style>
+    <script type="text/javascript">
+    function toggleView(source, tableId, tag) {
+      // select elements with given tag and class 'ext-view-m' inside element with given ID
+    var elems = $("#" + tableId + " " + tag + ".ext-view-m");
+    elems.toggleClass("ext-view-off");
+    // adding 'right' text to the switcher depending on current view state
+    $(source).text( elems.is(".ext-view-off") ? "Turn detailed view on" 
+                                              : "Turn detailed view off"); 
+    return false;
+    }
+    </script>
+    </head>
+    <body>
+        <ul>
+            <li><a href="../queues/index.html">Очереди вызовов</a></li>
+            <li><a class="active" href="../congestion/index.html">Текущие разговоры</a></li>
+            <li><a href="../conf/index.html">Конференция</a></li>
+            <li><a href="../cdr/index.php">История звонков</a></li>
+        </ul>
+        <div id="content"></div>
+
+        <script>
+            function show()
+            {
+                $.ajax({
+                    url: "query.php",
+                    cache: false,
+                    success: function(html){
+                        $("#content").html(html);
+                    }
+                });
+            }
+
+            $(document).ready(function(){
+                show();
+                setInterval('show()',1000);
+            });
+        </script>
+
+    </body>
+    </html>

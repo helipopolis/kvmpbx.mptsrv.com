@@ -1,0 +1,27 @@
+#!/usr/bin/perl -w
+#aster_eventwatching_daemon
+
+use warnings;
+use strict;
+use Daemon::Control;
+use Getopt::Long;
+
+GetOptions(
+    \ my %OPT,
+    'host=s',
+    'user=s',
+    'secret=s',
+    'dbhost=s',
+    'dbuser=s',
+    'dbsecret=s'
+);
+ 
+exit Daemon::Control->new(
+    name        => "Asterisk Eventwatcher Daemon",
+    path        => '/root/',
+ 
+    program     => '/root/aster_eventwatching_app.pl',
+    program_args => [ '--host', $OPT{host}, '--user', $OPT{user}, '--secret', $OPT{secret}, '--dbhost',  $OPT{dbhost}, '--dbuser', $OPT{dbuser}, '--dbsecret', $OPT{dbsecret}],
+ 
+    pid_file    => '/var/run/aster_eventwatcher_app.pid',
+)->run;

@@ -1,0 +1,301 @@
+[macro-monitor]
+ exten => s,1,Set(MONITOR_FILE=/var/spool/asterisk/monitor/${UNIQUEID})
+ same => n,MixMonitor(${MONITOR_FILE}.wav,b,/usr/local/bin/lame -S -V2 ${MONITOR_FILE}.wav ${MONITOR_FILE}.mp3 && rm -f ${MONITOR_FILE}.wav)
+ same => n,Set(CDR(userfield)=${UNIQUEID}.mp3)
+
+[macro-set-group]
+ exten => s,1,Verbose(1,***The device state is: ${DEVICE_STATE(PJSIP/${ARG1})})
+ same => n,Set(GROUP()=${ARG1})
+
+[macro-check-call-limit-and-dial]
+ exten => s,1,Macro(set-group,${ARG1})
+ same => n,Set(CALLS=${GROUP_COUNT(${GROUP()})})
+ same => n,ExecIf($[ ${CALLS} > ${ARG2}]?Busy)
+ same => n,NoOp(*** ${GROUP_COUNT(${GROUP()})} ***)
+ same => n,Dial(PJSIP/${ARG1},20,D(w${ARG3}),tr)
+ same => n,Hangup()
+
+[macro-dial-simple-exten]
+ exten => s,1,Verbose(CallerID is ${CALLERID(num)} and Argument 1 is "${ARG1}")
+ same => n,Dial(${ARG1},${ARG2},${ARG3}gF)
+ same => n,Verbose("${CALLERID(num)}-${ARG1} Dialstatus is - ${DIALSTATUS}")
+ same => n,Verbose("${CALLERID(num)}-${ARG1} Hangupcause is - ${HANGUPCAUSE}")
+ ;same => n,Hangup()
+
+[macro-dialout]
+  exten => s,1,Dial(${ARG1},${ARG2},${ARG3})
+  same =>n,Verbose(1,"***Dialstatus is - ${DIALSTATUS}")
+  same =>n,ExecIf($["${DIALSTATUS}" = "NOANSWER"]?Playback(the-number-u-dialed&ne-otvechaet))
+  same =>n,ExecIf($[["${DIALSTATUS}" != "CHANUNAVAIL"]&&["${DIALSTATUS}" != "CONGESTION"]]?Hangup())
+
+[macro-dialout-trunk]
+ exten => s,1,Dial(${ARG1},${ARG2},gt);${ARG3})
+ same => n,Set(Call_Dial_status=${DIALSTATUS})
+ same => n,Verbose(1,"Dialstatus is - ${Call_Dial_status}")
+ same => n,Hangup()
+
+[macro-dialout-trunk-econotel]
+ exten => s,1,NoOp(CallerID is ${CALLERID(num)} and Argument 1 is "${ARG1}")
+ same => n,Set(num=8${ARG1:1})
+ same => n,Dial(PJSIP/${num}@Econotel,${ARG2},gtrf(4956609620))
+ same => n,Set(Call_Dial_status=${DIALSTATUS})
+ same => n,Verbose(1,"Dialstatus is-${Call_Dial_status}")
+ same => n,GotoIf($["${Call_Dial_status}" = "CHANUNAVAIL"]?mtt)
+ same => n,Hangup()
+ same => n(mtt),Macro(dialout-trunk-mtt,7${num:1},${ARG2},gtr)
+ same => n,Hangup()
+
+[macro-dialout-trunk-mtt]
+ exten => s,1,NoOp(CallerID is ${CALLERID(num)} and Argument 1 is "${ARG1}")
+ same => n,Dial(PJSIP/MTT_MPTS1/sip:${ARG1}@login.mtt.ru,${ARG2},gtr);f(74956609620))
+ same => n,Set(Call_Dial_status=${DIALSTATUS})
+ same => n,Verbose(1,"Dialstatus is - ${Call_Dial_status}")
+ same => n,GotoIf($["${Call_Dial_status}" = "CHANUNAVAIL"]?mtt)
+ same => n,Hangup()
+ same => n(mtt),Dial(PJSIP/MTT_MPTS2/sip:${ARG1}@login.mtt.ru,${ARG2},gtr);f(74956609621))
+ same => n,Set(Call_Dial_status=${DIALSTATUS})
+ same => n,Verbose(1,"Dialstatus is - ${Call_Dial_status}")
+ same => n,GotoIf($["${Call_Dial_status}" = "CHANUNAVAIL"]?mtt2)
+ same => n,Hangup()
+ same => n(mtt2),Dial(PJSIP/MTT_MPTS2/sip:${ARG1}@login.mtt.ru,${ARG2},gtr);f(74956609622))
+ same => n,ExecIf($["${Call_Dial_status}" = "CHANUNAVAIL"]?Macro(dialout-trunk-econotel,${ARG1},${ARG2},tr))
+ same => n,Hangup()
+
+[macro-dial-aldan]
+ exten => s,1,NoOp(CallerID is ${CALLERID(num)} and Accountcode is ${CDR(accountcode)})
+ same => n,Dial(IAX2/aldan-iax/${ARG1},${ARG2},gtr)
+ same => n,Set(Call_Dial_status=${DIALSTATUS})
+ same => n,Verbose(1,"Dialstatus is - ${Call_Dial_status}")
+ same => n,GotoIf($["${Call_Dial_status}" = "CHANUNAVAIL"]?second-chan)
+ same => n,Hangup()
+ same => n(second-chan),Dial(IAX2/aldan-iax-internet/${ARG1},${ARG2},gtr)
+ same => n,Hangup()
+
+[to-mchs-only]
+ exten => _[23]XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@asterisk_mchs,30,tr)
+ exten => _4XXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@asterisk_mchs,30,tr)
+ exten => _1[79]XXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@asterisk_mchs,30,tr)
+ exten => _42XX,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr)
+ exten => _153XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN},30,tr)
+ exten => _498XXXXXXXXXX,1,Set(CALLERID(num)=4956229279)
+ same => n,Macro(dial-simple-exten,PJSIP/${EXTEN}@asterisk_mchs,30,tr)
+
+[messages]
+ exten => _4XXX,1,MessageSend(sip:${EXTEN},"${CALLERID(name)}"${MESSAGE(from)})
+
+[to-asterisk-ra]
+ exten => _[4]XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@asterisk_ra,30,tr)
+
+[inum]
+ exten => _988X.,1,Dial(PJSIP/zadarma/sip:${EXTEN:1}@sip.zadarma.com,${CallTimeout},t)
+ exten => _888XXXXXXXXX,1,Dial(PJSIP/zadarma/sip:${EXTEN:3}@sip.zadarma.com,${CallTimeout},t)
+
+[blf]
+ exten => _42XX,hint,PJSIP/${EXTEN}
+ exten => _2XXX,hint,PJSIP/${EXTEN}
+ exten => _30XX,hint,PJSIP/${EXTEN}
+ exten => _18XX,hint,PJSIP/${EXTEN};для 4200
+
+[test-pcm]
+ exten => _10XXX,1,Dial(PJSIP/4285,60,trD(w${EXTEN:1}#))
+ exten => _20XXX,1,Dial(PJSIP/4286,60,trD(w${EXTEN:1}#))
+ exten => _30XXX,1,Dial(PJSIP/4287,60,trD(w${EXTEN:1}#))
+
+[local-only]
+ include => to-mchs-only
+ include => messages
+ include => to-asterisk-ra
+ include => inum
+ include => test-pcm
+ exten => _7XX,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr)
+ exten => 4999,1,Playback(demo-echotest)
+ same => n,Echo
+ same => n,Playback(demo-echodone)
+ exten => _4[12]XX,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr)
+ exten => _20XX,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr)
+ exten => 3032,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr);Бевзенко
+ exten => 3033,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr);Курафеев
+ exten => 3034,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr);Андрюшин
+ exten => 3035,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr);Андрюшин
+ exten => 3037,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},15,tr);Бычкова
+ same => n,Macro(dialout-trunk-econotel,89165169488,30,tr) 
+ exten => 3054,1,Macro(dial-simple-exten,${PJSIP_DIAL_CONTACTS(${EXTEN})},30,tr);Орлов
+ exten => _43XX,1,Macro(dial-simple-exten,IAX2/${EXTEN},30,tr)
+ exten => _44XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@pbx-ald.mptsrv.org,30,tr)
+ exten => _11XX,1,Macro(dialout-trunk,PJSIP/${EXTEN:1}@Kharkov,30,tr)
+ exten => _7[01238]XXX,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => _28XX,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => 2000,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => 2012,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => 2001,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => 2002,1,Macro(dial-aldan,${EXTEN:1},30,tr)
+ exten => _74XXXX!,1,Macro(dialout-trunk,PJSIP/${EXTEN:2}@bachat,30,tr)
+ exten => _74[1-9]XX,1,Macro(dialout-trunk,PJSIP/${EXTEN:2}@bachat,30,tr)
+ exten => _*97,1,VoiceMailMain(${CALLERID(num)})
+ same => n,Hangup()
+ exten => _1[29]XX,1,Dial(IAX2/vostport/${EXTEN:1},30,tr)
+ same => n,Hangup()
+
+[pstn]
+ exten => _810749XXXXXXX,1,Macro(dialout-trunk-econotel,${EXTEN},30,tr)
+ exten => _849XXXXXXXX,1,Macro(dialout-trunk-econotel,${EXTEN},30,tr)
+ exten => _+749XXXXXXXX,1,Macro(dialout-trunk-econotel,8${EXTEN:2},30,tr)
+
+[national]
+ ;exten => _+7XXXXXXXXXX,1,Macro(dialout-trunk-econotel,${EXTEN:1},30,tr)
+ exten => _7XXXXXXXXXX,1,Macro(dialout-trunk-econotel,${EXTEN},30,tr)
+ exten => _8XXXXXXXXXX,1,Macro(dialout-trunk-econotel,7${EXTEN:1},30,t)
+
+[local-only-pstn]
+ include => local-only
+ include => pstn
+
+[kharkov-mobile]
+ exten => _9044XXXXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@Kharkov,30,tr)
+ exten => _9050XXXXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@Kharkov,30,tr)
+ exten => _906XXXXXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@Kharkov,30,tr)
+ exten => _909XXXXXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@Kharkov,30,tr)
+ exten => _9057XXXXXXX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@Kharkov,30,tr)
+
+[long-distance]
+ include => local-only-pstn
+ include => national
+ exten => _+380XXXXXXXXX,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _810357XXXXXXXX,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _810375XXXXXXXXX,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _810380XXXXXXXXX,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _81044.,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _810390236.,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+ exten => _8107XXXXXXXXXX,1,Macro(dialout-trunk-mtt,${EXTEN},30,tr)
+
+[long-distance-kharkov]
+include => long-distance
+include => kharkov-mobile
+ 
+[valun-only]
+ exten => _0[12]XXX,1,Macro(dial-simple-exten,OOH323/sinergia/${EXTEN},30,tr)
+ exten => _40XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@valun,30,tr)
+ exten => _8.,1,ExecIf($[${CALLERID(num)}!=4099]?Macro(dialout-trunk,PJSIP/youmagic_valun/sip:${EXTEN}@voip.mtt.ru,30,tr)
+ exten => _4[123]XX,1,Macro(dial-simple-exten,PJSIP/${EXTEN},30,tr)
+
+[sub-pstn-incoming-callerid]
+ exten => s,1,Verbose(CallerID is ${CALLERID(all)})
+ same => n,Verbose(Context is ${MACRO_CONTEXT})
+ same => n,Set(CALLERID(num)=8${CALLERID(num)})
+ same => n,Set(LN=${LEN(${CALLERID(num)})})
+ same => n,Set(region=${ODBC_DEFCODES(${CALLERID(num):1})})
+ same => n,Set(dest="000")
+ same => n,ExecIf($[${LN}=11]?Set(dest=${ODBC_SELECT_FROM_CDR(${CALLERID(num)})}))
+ same => n,AGI(company_name.php)
+ same => n,Set(CALLERID(name)=${lookupcid})
+ same => n,Verbose(Company is ${CALLERID(name)})
+ same => n,Log(VERBOSE,"Company is ${CALLERID(name)}")
+ same => n,ExecIf($[${LEN(${CALLERID(name)})}=0]?Set(CALLERID(name)=${region}))
+ ;same => n,ExecIf(${LEN(${dest})}=4?Gosub(sub-ivr-redirect,s,1(${dest})))
+ same => n,Return(${dest})
+
+[from-trunk]
+ exten => _495660962[0-2],1,Gosub(sub-pstn-incoming-callerid,s,1)
+ same => n,ExecIf($[${LEN(${GOSUB_RETVAL})}=4]?Gosub(sub-ivr-redirect,s,1(${GOSUB_RETVAL})))
+ same => n,Goto(ivr-common,s,1)
+ exten => _74997097761,1,Macro(dial-simple-exten,PJSIP/4201&PJSIP/4206&PJSIP/4207,30,tr)
+ exten => _74997043738,1,Macro(dial-simple-exten,PJSIP/4200,30,tr)
+ ;exten => _883140776008258,1,Macro(dial-simple-exten,PJSIP/${EXTEN}@valun,30,tr)
+
+[from-mango]
+ exten => mpt-service,1,Macro(dial-simple-exten,PJSIP/2053,20,tr)
+ same => n,Goto(ivr-common,s,1)
+
+[from-aldan]
+ exten => _X.,1,Set(CALLERID(num)=7${CALLERID(num)})
+ same => n,Goto(local-only,${EXTEN},1)
+
+[from-kharkov]
+ exten => _X.,1,Set(CALLERID(num)=1${CALLERID(num)})
+ same => n,Goto(long-distance,${EXTEN},1)
+
+[from-test222]
+ include => local-only
+
+[from-vostport]
+ include => local-only
+
+[efimenko]
+;exten => _8.,1,Macro(dial-simple-exten,PJSIP/Youmagic_Efimenko/sip:${EXTEN}@voip.mtt.ru,30,tr)
+ exten => _X.,1,Goto(long-distance,${EXTEN},1)
+
+[in-common]
+ exten => s,1,Macro(dial-simple-exten,PJSIP/3037,15,tr)
+ same => n,Macro(dial-simple-exten,PJSIP/3037&PJSIP/2052,15,tr)
+ same => n,Macro(dial-simple-exten,PJSIP/3037&PJSIP/2052&PJSIP/3034,15,tr)
+ same => n,Goto(in-buhgalteria,s,1)
+
+[in-buhgalteria]
+ exten => s,1,Macro(dial-simple-exten,PJSIP/2052&PJSIP/2057&PJSIP/2054&PJSIP/4250,15,tr)
+ same => n,Macro(dial-simple-exten,PJSIP/2051,15,tr)
+ same => n,Hangup()
+
+[ivr-common]
+  exten => i,1,Goto(t,1)
+  exten => s,1,Answer()
+  same => n,Background(julia/zdravstvuite_vy_pozvonili_v_gruppu_kompanii_MPT-servis)
+  same => n,GotoIfTime(19:00-9:00|mon-fri|*|*?nowork,1)
+  same => n,Background(julia/chtoby_pozvonit_v_bukhgalteriiu)
+  same => n,Background(julia/Najmite_1)
+  same => n,Background(julia/Esli_vy_znaete_vnutrennii_nomer_abonenta_naberite_ego_v_tonalnom_rezhime_ili_dozhdites_otveta_pervogo_osvobodivshegosia_sotrudnika)
+  same => n,Waitexten(7)
+  exten => nowork,1,Background(julia/Seichas_nikto_ne_mozhet_vam_otvetit)
+  same => n,Waitexten(7)
+   
+  exten => 1,1,Goto(in-buhgalteria,s,1)
+  exten => t,1,Goto(in-common,s,1);Macro(dial-simple-exten,PJSIP/4956609620@TDE,30,tr)
+  exten => _X.,1,Goto(local-only,${EXTEN},1)
+
+[sub-ivr-redirect]
+  exten => s,1,Answer()
+  same => n,Background(julia/zdravstvuite_vy_pozvonili_v_gruppu_kompanii_MPT-servis)
+  same => n,Background(julia/vam_zvonil_sotrudnuk)
+  same => n,SayDigits(${ARG1})
+  same => n,Background(julia/vy_mozhete_dozhdatsya)
+  same => n,WaitExten(7)
+  same => n,Goto(local-only,${ARG1},1)
+
+  exten => _XXXX,1,Goto(local-only,${EXTEN},1)
+ 
+  exten => t,1,Goto(local-only,${ARG1},1)
+  exten => i,1,Goto(local-only,${ARG1},1)
+  exten => e,1,Goto(local-only,${ARG1},1)
+
+[administrator]
+ include => long-distance
+ exten => 5555,1,Authenticate(1234)
+ same => n,Read(SPYNUM,agent-newlocation)
+ same => n,NoCDR
+ same => n,ChanSpy(PJSIP/${SPYNUM))
+ ;exten => _*222x.#,1,Macro(user-callerid,)
+ exten => _*222.#,1,Answer
+ same => n,NoCDR
+ same => n,Wait(1)
+ same => n,ChanSpy(PJSIP/${EXTEN:4},q)
+ same => n,Hangup
+
+;whisper - Вторжение в разговор
+ ;exten => _*223x.#,1,Macro(user-callerid,)
+ exten => _*223x.#,1,Answer
+ same => n,NoCDR
+ same => n,Wait(1)
+ same => n,ChanSpy(PJSIP/${EXTEN:4},qw)
+ same => n,Hangup
+
+;barge - Слышат все 3 участника
+ ;exten => _*224x.#,1,Macro(user-callerid,)
+ exten => _*224x.#,1,Answer
+ same => n,NoCDR
+ same => n,Wait(1)
+ same => n,ChanSpy(PJSIP/${EXTEN:4},qB)
+ same => n,Hangup
+
+ exten => _*225,1,SIPAddHeader("Call-Info: Answer-after=0");
+ same => n,Page(PJSIP/2012&PJSIP/1833&PJSIP/1821)
+ same => n,Hangup()
+

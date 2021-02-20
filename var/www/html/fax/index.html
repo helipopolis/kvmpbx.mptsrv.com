@@ -1,0 +1,22 @@
+<title>Форма для отправки факсов</title>
+<body>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">    
+        <table align=center width=600 bgcolor=#ffffff border=0>
+        <tr>
+                <td align=center colspan=2>     <h2>Форма для отправки факсов</h2> </td>
+        </tr>
+        <tr>
+                <td> На какой номер отправляем факс? </td>
+                <td> <INPUT NAME="number" VALUE ="" type="text" SIZE=12 MAXLENGTH=12> </td>
+        </tr>
+        <tr>
+                <td> На какую почту сообщить статус отправки? </td>
+                <td> <INPUT NAME="email" VALUE ="seligdar@seligdar.ru" type="email" SIZE=20 MAXLENGTH=50> </td>
+        </tr>
+        <tr>
+                <td> Прикрепляемый файл<input type="file" accept="application/pdf" name="file" /> </td>
+                <td> <input type="submit" name="submit" value="Отправить Факс!"> </td>
+        </tr>
+        <table>
+    </form>
+</body>

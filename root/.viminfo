@@ -1,0 +1,1054 @@
+# Этот файл viminfo автоматически создан Vim 7.4.
+# Его можно (осторожно!) редактировать.
+
+# Значение опции 'encoding' в момент записи файла
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Последний Шаблон поиска:
+~MSle0~/recidive
+
+# Последняя строка для замены:
+$
+
+# Командная строка, история (начиная от свежего к старому):
+:wq
+:q
+:q!
+:1
+:w
+:Q
+:746
+:1224
+:PluginInstall
+:answer
+:Wq
+
+# Строка поиска, история (начиная от свежего к старому):
+?/recidive
+?/2998
+? \Vsame\%#
+?/ExecIf($["${CUT(CHANNEL,/,1)}
+?/sub-rtcp-handler
+?/Технология
+?/_5
+?/2800
+?/macro-dial-exten
+?/from-mts
+?/Dial(
+? \Vexten\%#
+?/2000
+?/*
+?/cdr
+?/->
+?/char
+?/utf
+?/latin
+?/international
+?/sendemail
+?/ExecIf
+?/1300
+?/hangupca
+?/macro-dial
+?/Разговор завершен
+?/1224
+?/dial-exten
+?/dial-simple
+?/userfield
+?/email
+?/itlite
+?/2605
+?/telegr
+?//var/log/fail2ban.log
+?/*225
+?/[local
+?/[from-it
+?/[long-distance
+?/long-distance
+?/4X
+?/[from-ru
+??2989
+??2990
+??планер
+?/administrator
+?/intercom
+?/[handler
+?/sip:
+?/PJSIP_HEADER
+
+# Выражение, история (начиная от свежего к старому):
+
+# Строка ввода, история (начиная от свежего к старому):
+
+# Строка ввода, история (начиная от свежего к старому):
+
+# Регистры:
+"1	LINE	0
+	IPV6_ADDR_GEN_MODE=stable-privacy
+"2	LINE	0
+	IPV6_FAILURE_FATAL=no
+"3	LINE	0
+	IPV6_DEFROUTE=yes
+"4	LINE	0
+	IPV6_AUTOCONF=yes
+"5	LINE	0
+	IPV6_ADDR_GEN_MODE=stable-privacy
+"6	LINE	0
+	IPV6_FAILURE_FATAL=no
+"7	LINE	0
+	IPV6_DEFROUTE=yes
+"8	LINE	0
+	IPV6_AUTOCONF=yes
+"9	LINE	0
+	
+""-	CHAR	0
+	0
+
+# Глобальные отметки:
+'0  1  0  /var/www/html/index.html
+'1  1  0  /etc/httpd/conf.d/userdir.conf
+'2  7  26  /etc/httpd/conf.d/yealink.conf
+'3  176  4  /etc/httpd/conf.d/ssl.conf
+'4  1  0  /etc/httpd/conf.d/php.conf
+'5  83  0  /etc/httpd/conf.d/autoindex.conf
+'6  1  0  /etc/httpd/conf.d/asterisk-cdr-viewer.conf
+'7  8  0  /etc/httpd/conf.d/addressbook.conf
+'8  21  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+'9  6  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+
+# Список прыжков (сначала более свежие):
+-'  1  0  /var/www/html/index.html
+-'  1  0  /etc/httpd/conf.d/userdir.conf
+-'  7  26  /etc/httpd/conf.d/yealink.conf
+-'  176  4  /etc/httpd/conf.d/ssl.conf
+-'  134  0  /etc/httpd/conf.d/ssl.conf
+-'  1  0  /etc/httpd/conf.d/php.conf
+-'  83  0  /etc/httpd/conf.d/autoindex.conf
+-'  1  0  /etc/httpd/conf.d/autoindex.conf
+-'  1  0  /etc/httpd/conf.d/asterisk-cdr-viewer.conf
+-'  8  0  /etc/httpd/conf.d/addressbook.conf
+-'  9  0  /etc/httpd/conf.d/addressbook.conf
+-'  21  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+-'  6  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+-'  11  61  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+-'  87  0  /etc/httpd/conf/httpd.conf
+-'  127  0  /etc/httpd/conf/httpd.conf
+-'  8  60  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+-'  34  60  /etc/httpd/conf.d/ssl.conf
+-'  1  0  /etc/sysconfig/network-scripts/route-eth0
+-'  180  28  /etc/asterisk/manager.conf
+-'  158  12  /etc/asterisk/manager.conf
+-'  1  0  /etc/asterisk/manager.conf
+-'  12  64  /etc/monit.d/asterisk
+-'  8  16  /etc/monit.d/asterisk
+-'  6  45  /etc/monit.d/asterisk
+-'  11  0  /etc/rc.local
+-'  2  77  /etc/hosts
+-'  1  0  /etc/hosts
+-'  750  1  /etc/fail2ban/jail.conf
+-'  615  0  /etc/fail2ban/jail.conf
+-'  751  0  /etc/fail2ban/jail.conf
+-'  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
+-'  9  8  /etc/sysconfig/network-scripts/ifcfg-eth0
+-'  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
+-'  8  8  /etc/sysconfig/network-scripts/ifcfg-eth1
+-'  115  0  /etc/asterisk/extconfig.conf
+-'  82  0  /etc/asterisk/extconfig.conf
+-'  11  0  /etc/asterisk/res_odbc.conf
+-'  53  0  /etc/asterisk/sorcery.conf
+-'  1  0  /etc/asterisk/sorcery.conf
+-'  33  18  /etc/asterisk/cdr_adaptive_odbc.conf
+-'  34  8  /etc/asterisk/cdr_adaptive_odbc.conf
+-'  6  0  /etc/asterisk/res_odbc.conf
+-'  17  1  /etc/odbc.ini
+-'  7  0  /etc/odbc.ini
+-'  24  0  /etc/odbcinst.ini
+-'  5  30  /etc/hosts
+-'  3  28  /etc/hosts
+-'  594  12  /etc/asterisk/extensions.conf
+-'  593  18  /etc/asterisk/extensions.conf
+-'  521  45  /etc/asterisk/extensions.conf
+-'  766  35  /etc/asterisk/extensions.conf
+-'  772  37  /etc/asterisk/extensions.conf
+-'  768  45  /etc/asterisk/extensions.conf
+-'  712  0  /etc/asterisk/extensions.conf
+-'  730  0  /etc/asterisk/extensions.conf
+-'  37  11  /usr/src/max/check-gateways.sh
+-'  83  0  /usr/src/max/check-gateways.sh
+-'  1  16  /etc/sysconfig/network-scripts/rule-eth2
+-'  1  0  /etc/sysconfig/network-scripts/rule-eth1
+-'  1  24  /etc/sysconfig/network-scripts/route-eth2
+-'  1  0  /etc/sysconfig/network-scripts/route-eth1
+-'  1  0  /usr/src/max/check-gateways.sh
+-'  29  16  /usr/src/max/check-gateways.sh
+-'  8  20  /etc/sysconfig/network-scripts/ifcfg-eth2
+-'  11  10  /etc/sysconfig/network-scripts/ifcfg-eth2
+-'  731  12  /etc/asterisk/extensions.conf
+-'  733  47  /etc/asterisk/extensions.conf
+-'  732  4  /etc/asterisk/extensions.conf
+-'  1299  13  /etc/asterisk/extensions.conf
+-'  1172  11  /etc/asterisk/extensions.conf
+-'  1155  11  /etc/asterisk/extensions.conf
+-'  1136  11  /etc/asterisk/extensions.conf
+-'  1118  11  /etc/asterisk/extensions.conf
+-'  898  14  /etc/asterisk/extensions.conf
+-'  889  14  /etc/asterisk/extensions.conf
+-'  880  14  /etc/asterisk/extensions.conf
+-'  874  14  /etc/asterisk/extensions.conf
+-'  868  14  /etc/asterisk/extensions.conf
+-'  862  14  /etc/asterisk/extensions.conf
+-'  855  14  /etc/asterisk/extensions.conf
+-'  849  14  /etc/asterisk/extensions.conf
+-'  843  14  /etc/asterisk/extensions.conf
+-'  836  14  /etc/asterisk/extensions.conf
+-'  829  14  /etc/asterisk/extensions.conf
+-'  821  14  /etc/asterisk/extensions.conf
+-'  814  14  /etc/asterisk/extensions.conf
+-'  807  14  /etc/asterisk/extensions.conf
+-'  799  14  /etc/asterisk/extensions.conf
+-'  793  14  /etc/asterisk/extensions.conf
+-'  787  1  /etc/asterisk/extensions.conf
+-'  1223  17  /etc/asterisk/extensions.conf
+-'  1111  0  /etc/asterisk/extensions.conf
+-'  1300  60  /etc/asterisk/extensions.conf
+-'  1301  5  /etc/asterisk/extensions.conf
+-'  424  1  /etc/asterisk/extensions.conf
+
+# История местных отметок (от более свежих к старым):
+
+> /var/www/html/index.html
+	"	1	0
+	^	1	77
+	.	1	76
+	+	1	76
+
+> /etc/httpd/conf.d/userdir.conf
+	"	1	0
+
+> /etc/httpd/conf.d/yealink.conf
+	"	7	26
+	^	7	27
+	.	7	24
+	+	5	20
+	+	5	41
+	+	5	41
+	+	8	2
+	+	6	0
+	+	3	31
+	+	4	0
+	+	8	0
+	+	7	24
+
+> /etc/httpd/conf.d/ssl.conf
+	"	176	4
+
+> /etc/httpd/conf.d/php.conf
+	"	1	0
+
+> /etc/httpd/conf.d/autoindex.conf
+	"	83	0
+
+> /etc/httpd/conf.d/asterisk-cdr-viewer.conf
+	"	1	0
+
+> /etc/httpd/conf.d/addressbook.conf
+	"	8	0
+	^	8	29
+	.	8	28
+	+	4	39
+	+	4	39
+	+	4	39
+	+	16	24
+	+	6	0
+	+	3	50
+	+	16	0
+	+	12	25
+	+	12	6
+	+	12	25
+	+	15	9
+	+	10	4
+	+	11	2
+	+	12	28
+	+	14	5
+	+	13	17
+	+	9	0
+	+	10	0
+	+	11	0
+	+	12	0
+	+	13	0
+	+	14	0
+	+	15	0
+	+	6	0
+	+	5	20
+	+	4	0
+	+	6	0
+	+	9	0
+	+	5	0
+	+	10	0
+	+	11	0
+	+	12	0
+	+	13	0
+	+	14	0
+	+	15	0
+	+	8	1
+	+	7	1
+	+	6	2
+	+	9	0
+	+	10	0
+	+	11	0
+	+	12	0
+	+	13	0
+	+	14	0
+	+	15	0
+	+	9	0
+	+	8	28
+
+> /etc/httpd/conf.d/pbx.seligdar.ru.conf
+	"	21	25
+	^	21	26
+	.	21	25
+	+	1	0
+	+	2	0
+	+	3	0
+	+	4	0
+	+	3	0
+	+	1	22
+	+	8	60
+	+	9	64
+	+	10	65
+	+	9	64
+	+	8	56
+	+	9	24
+	+	10	25
+	+	6	25
+	+	2	25
+	+	3	34
+	+	21	25
+
+> /etc/httpd/conf/httpd.conf
+	"	87	0
+	^	42	20
+	.	42	0
+	+	158	1
+	+	161	0
+	+	167	0
+	+	168	0
+	+	169	0
+	+	204	0
+	+	207	0
+	+	208	53
+	+	157	20
+	+	153	35
+	+	151	43
+	+	249	10
+	+	250	11
+	+	350	3
+	+	422	4
+	+	421	4
+	+	423	0
+	+	560	4
+	+	588	4
+	+	866	8
+	+	867	0
+	+	1025	2
+	+	1016	20
+	+	1017	0
+	+	1016	0
+	+	1024	0
+	+	440	0
+	+	150	55
+	+	42	0
+
+> /etc/sysconfig/network-scripts/route-eth0
+	"	1	0
+
+> /etc/asterisk/manager.conf
+	"	180	28
+	^	180	29
+	.	180	28
+	+	158	12
+	+	168	28
+	+	180	28
+
+> /etc/monit.d/asterisk
+	"	12	64
+	^	12	65
+	.	12	64
+	+	1	62
+	+	1	103
+	+	9	0
+	+	13	16
+	+	6	50
+	+	7	38
+	+	7	0
+	+	1	62
+	+	3	0
+	+	8	0
+	+	11	65
+	+	12	64
+
+> /etc/rc.local
+	"	11	0
+	.	12	0
+	+	12	0
+
+> /etc/hosts
+	"	2	77
+	^	2	78
+	.	1	92
+	+	3	29
+	+	4	26
+	+	5	15
+	+	3	15
+	+	4	15
+	+	5	30
+	+	3	0
+	+	1	92
+
+> /etc/fail2ban/jail.conf
+	"	750	1
+	^	751	0
+	.	750	11
+	+	750	31
+	+	700	126
+	+	701	0
+	+	750	11
+
+> /etc/sysconfig/network-scripts/ifcfg-eth0
+	"	13	20
+	^	13	21
+	.	13	20
+	+	5	10
+	+	4	13
+	+	8	0
+	+	9	8
+	+	8	0
+	+	4	15
+	+	11	10
+	+	5	10
+	+	14	0
+	+	4	15
+	+	13	20
+
+> /etc/sysconfig/network-scripts/ifcfg-eth1
+	"	16	11
+	^	16	12
+	.	16	11
+	+	17	0
+	+	21	13
+	+	8	0
+	+	4	15
+	+	8	0
+	+	16	11
+
+> /etc/asterisk/extconfig.conf
+	"	115	0
+	^	112	34
+	.	112	34
+	+	24	38
+	+	25	0
+	+	24	15
+	+	25	15
+	+	24	35
+	+	25	0
+	+	24	0
+	+	109	29
+	+	110	25
+	+	111	24
+	+	115	33
+	+	114	28
+	+	113	35
+	+	112	34
+
+> /etc/asterisk/res_odbc.conf
+	"	11	0
+	^	11	9
+	.	11	0
+	+	7	0
+	+	11	20
+	+	11	21
+	+	11	9
+	+	11	0
+
+> /etc/asterisk/sorcery.conf
+	"	53	0
+
+> /etc/asterisk/cdr_adaptive_odbc.conf
+	"	33	18
+	^	33	19
+	.	34	0
+	+	34	0
+
+> /etc/odbc.ini
+	"	17	1
+	^	5	35
+	.	5	23
+	+	5	23
+	+	11	16
+	+	5	23
+
+> /etc/odbcinst.ini
+	"	24	0
+	^	24	13
+	.	24	12
+	+	26	0
+	+	25	29
+	+	24	12
+
+> /etc/asterisk/extensions.conf
+	"	594	12
+	^	594	13
+	.	594	12
+	+	709	22
+	+	712	0
+	+	712	159
+	+	715	0
+	+	715	10
+	+	715	110
+	+	715	48
+	+	716	48
+	+	717	36
+	+	718	35
+	+	719	150
+	+	369	0
+	+	377	0
+	+	364	0
+	+	703	58
+	+	1087	54
+	+	1087	14
+	+	1105	14
+	+	1124	14
+	+	1145	1
+	+	427	66
+	+	539	59
+	+	541	17
+	+	543	22
+	+	545	17
+	+	547	17
+	+	549	17
+	+	551	17
+	+	553	17
+	+	555	17
+	+	557	17
+	+	559	17
+	+	561	17
+	+	563	17
+	+	543	59
+	+	545	59
+	+	547	59
+	+	549	59
+	+	551	59
+	+	553	59
+	+	555	59
+	+	557	59
+	+	559	59
+	+	561	59
+	+	563	59
+	+	1152	107
+	+	1150	0
+	+	1150	169
+	+	1152	1
+	+	1152	135
+	+	1150	19
+	+	1152	0
+	+	1153	0
+	+	469	0
+	+	469	0
+	+	469	0
+	+	460	0
+	+	459	0
+	+	456	60
+	+	450	66
+	+	446	66
+	+	442	66
+	+	442	0
+	+	436	0
+	+	438	0
+	+	437	0
+	+	429	66
+	+	429	0
+	+	423	74
+	+	654	67
+	+	1147	71
+	+	1149	1
+	+	1148	0
+	+	1148	32
+	+	140	0
+	+	140	31
+	+	408	0
+	+	140	55
+	+	654	76
+	+	423	51
+	+	502	63
+	+	1150	1
+	+	654	22
+	+	422	59
+	+	1299	1
+	+	1299	14
+	+	1299	0
+	+	1299	74
+	+	1300	0
+	+	1301	0
+	+	1301	9
+	+	1300	42
+	+	1299	14
+	+	732	0
+	+	732	8
+	+	733	47
+	+	731	59
+	+	593	29
+	+	594	12
+	+	594	12
+
+> /usr/src/max/check-gateways.sh
+	"	37	11
+	^	37	12
+	.	37	11
+	+	27	4
+	+	26	24
+	+	28	0
+	+	27	6
+	+	28	4
+	+	30	3
+	+	29	32
+	+	30	17
+	+	31	0
+	+	33	16
+	+	34	16
+	+	37	11
+	+	37	39
+	+	36	29
+	+	38	0
+	+	26	6
+	+	27	6
+	+	29	16
+	+	30	17
+	+	33	10
+	+	34	10
+	+	36	11
+	+	37	11
+	+	31	0
+	+	28	0
+	+	29	16
+	+	27	21
+	+	37	25
+	+	26	6
+	+	27	6
+	+	29	17
+	+	30	17
+	+	33	10
+	+	34	10
+	+	36	11
+	+	37	11
+
+> /etc/sysconfig/network-scripts/rule-eth2
+	"	1	16
+	^	1	17
+	.	1	16
+	+	1	16
+
+> /etc/sysconfig/network-scripts/rule-eth1
+	"	1	0
+
+> /etc/sysconfig/network-scripts/route-eth2
+	"	1	24
+	^	1	25
+	.	1	24
+	+	1	24
+
+> /etc/sysconfig/network-scripts/route-eth1
+	"	1	0
+	.	2	0
+	+	2	0
+
+> /etc/sysconfig/network-scripts/ifcfg-eth2
+	"	8	20
+	^	8	21
+	.	8	20
+	+	15	0
+	+	11	0
+	+	6	18
+	+	8	20
+
+> /etc/asterisk/extensions.
+	"	1	0
+
+> /var/www/html/cdr/inc/config/config.php
+	"	22	50
+	^	22	51
+	.	22	50
+	+	22	50
+
+> /etc/my.cnf
+	"	10	0
+	^	10	1
+	.	10	0
+	+	16	0
+	+	10	32
+	+	12	29
+	+	14	17
+	+	14	35
+	+	12	27
+	+	14	31
+	+	10	30
+	+	14	1
+	+	12	0
+	+	10	0
+	+	16	0
+	+	10	0
+	+	12	0
+	+	14	0
+	+	10	0
+	+	13	0
+	+	10	0
+	+	13	0
+	+	10	0
+
+> /etc/yum.repos.d/mysql-community.repo
+	"	36	7
+	^	36	8
+	.	36	8
+	+	28	8
+	+	42	8
+	+	36	8
+
+> /etc/yum.repos.d/mysql-community
+	"	1	0
+
+> /etc/asterisk/modules.conf
+	"	24	11
+	^	56	17
+	.	56	16
+	+	57	22
+	+	56	35
+	+	57	35
+	+	2	12
+	+	156	0
+	+	58	0
+	+	57	0
+	+	56	0
+	+	57	0
+	+	58	0
+	+	56	16
+
+> /etc/asterisk/cdr_odbc.conf
+	"	1	0
+
+> /usr/src/asterisk-certified-16.8-cert5/cdr/cdr_adaptive_odbc.c
+	"	291	20
+	.	387	0
+	+	386	0
+	+	387	0
+
+> /usr/src/asterisk-certified-16.8-cert5/configs/samples/res_odbc.conf.sample
+	"	125	0
+
+> /usr/src/asterisk-certified-16.8-cert5/cdr/:q
+	"	1	0
+
+> /etc/asterisk/func_odbc.conf
+	"	83	20
+
+> /etc/asterisk/cdr.conf
+	"	164	0
+
+> /etc/yum.repos.d/mysql-community-source.repo
+	"	1	0
+
+> /etc/res_od
+	"	1	0
+
+> /usr/src/asterisk-certified-16.8-cert5/configs/samples/cdr.conf.sample
+	"	166	0
+
+> /usr/src/asterisk-certified-16.8-cert5/configs/samples/cdr_odbc.conf.sample
+	"	1	0
+
+> /usr/src/asterisk-certified-16.8-cert5/configs/samples/cdr_adaptive_odbc.conf.sample
+	"	23	0
+
+> /opt/sendemail-no-attachment.sh
+	"	1	0
+
+> /etc/msmtprc
+	"	11	12
+	^	11	13
+	.	11	13
+	+	11	35
+	+	5	0
+	+	4	16
+	+	5	16
+	+	6	15
+	+	10	25
+	+	12	18
+	+	5	0
+	+	6	0
+	+	7	0
+	+	8	0
+	+	9	0
+	+	10	0
+	+	11	0
+	+	12	0
+	+	4	0
+	+	5	0
+	+	7	6
+	+	6	19
+	+	7	7
+	+	5	14
+	+	6	8
+	+	2	6
+	+	7	7
+	+	2	6
+	+	3	0
+	+	11	13
+
+> /etc/cdr_ad
+	"	1	0
+
+> /var/www/html/sxd/index.php
+	"	172	10
+
+> /var/www/html/sxd/cfg.php
+	"	11	24
+	^	11	25
+	.	11	24
+	+	14	23
+	+	11	24
+
+> /etc/sudoers
+	"	115	113
+	^	115	114
+	.	114	121
+	+	113	10
+	+	114	0
+	+	113	134
+	+	114	121
+
+> /etc/asterisk/rtp.conf
+	"	45	0
+
+> /etc/asterisk/logger.conf
+	"	128	0
+
+> /etc/my.cnf.d/server.cnf
+	"	1	0
+
+> /etc/sysconfig/network-scripts/route-eth3
+	"	1	0
+
+> /etc/asterisk/iax.conf
+	"	106	0
+	^	83	0
+	.	83	0
+	+	106	3
+	+	83	0
+	+	84	0
+	+	85	0
+	+	86	0
+	+	87	0
+	+	88	0
+	+	89	0
+	+	90	0
+	+	91	0
+	+	92	0
+	+	93	0
+	+	83	0
+
+> /usr/src/letsencrypt-renew.sh
+	"	1	0
+	^	1	19
+	.	1	18
+	+	2	20
+	+	3	58
+	+	5	18
+	+	6	20
+	+	7	0
+	+	1	18
+
+> ~/backup_mysql.sh
+	"	1	0
+
+> /etc/yum.repos.d/sngrep.repo
+	"	3	64
+	^	3	65
+	.	3	0
+	+	5	0
+	+	4	0
+	+	3	0
+
+> /etc/asterisk/extensionss.co
+	"	1	0
+
+> /.git/config
+	"	11	57
+	^	11	58
+	.	11	57
+	+	8	0
+	+	11	57
+
+> /etc/fail2ban/fail2ban.conf
+	"	24	16
+	^	24	17
+	.	24	16
+	+	24	16
+
+> /etc/asterisk/extensions.cio
+	"	1	0
+
+> /var/www/yealink/y000000000000.cfg
+	"	646	9
+
+> /var/www/yealink/y000000000005.cfg
+	"	644	27
+	^	643	26
+
+> /etc/asterisk/extensions.ael
+	"	536	7
+	^	536	8
+	.	536	7
+	+	534	21
+	+	533	21
+	+	534	17
+	+	532	12
+	+	533	11
+	+	534	14
+	+	532	5
+	+	536	7
+
+> /etc/resolv.conf
+	"	1	20
+	^	1	21
+	.	1	20
+	+	1	20
+
+> /var/www/html/congestion/connection.php
+	"	1	0
+
+> /usr/src/asterisk-certified-16.8-cert5/configs/basic-pbx/modules.conf
+	"	1	0
+
+> /var/log/httpd/access_log-20201130
+	"	1842	0
+
+> /var/log/httpd/access_log
+	"	42	0
+
+> /var/www/yealink/805ec011649e.cfg
+	"	1	0
+
+> /var/www/yealink/805ec0b79aa6.cfg
+	"	1	0
+
+> /var/www/yealink/00156598d48c.cfg
+	"	12	28
+	^	12	29
+	.	12	28
+	+	3	21
+	+	4	19
+	+	3	21
+	+	4	21
+	+	5	28
+	+	6	25
+	+	7	25
+	+	12	28
+
+> /var/lib/asterisk/agi-bin/company_name.php
+	"	1	0
+
+> /var/www/yealink/00156598d45b.cfg
+	"	1	0
+
+> /home/max/queryresult.sql
+	"	1	0
+
+> /home/max/QueryResult.sql
+	"	6	33
+	^	6	34
+	.	6	33
+	+	6	33
+
+> /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip_empty_info.c
+	"	83	1
+
+> /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip_dlg_options.c
+	"	101	1
+
+> /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip_sips_contact.c
+	"	1	0
+
+> /etc/ntp.conf
+	"	1	0
+
+> /usr/src/asterisk-certified-16.8-cert3/configs/samples/extconfig.conf.sample
+	"	80	0
+
+> /var/www/html/queues/query.php
+	"	1	0
+
+> /var/www/html/congestion/query.php
+	"	1	0
+
+> /var/www/html/conf/query.php
+	"	1	0
+
+> /var/www/yealink/.htaccess
+	"	1	20
+	^	1	21
+	.	2	0
+	+	1	46
+	+	1	20
+	+	1	45
+	+	1	46
+	+	1	21
+	+	2	0
+	+	2	0
+
+> /var/www/html/.htpasswd
+	"	1	0
+
+> /etc/httpd/conf.d/pbx.seligdar.ru
+	"	1	0
+
+> /var/www/yealink/y000000000053.cfg
+	"	493	38
+
+> /etc/fail2ban/paths-fedora.conf
+	"	20	0
+	^	20	0
+	.	19	2
+	+	19	2
+
+> /etc/ssh/sshd_banner
+	"	22	0
+	^	22	0
+	.	21	24
+	+	1	33
+	+	21	24
+
+> /etc/ssh/sshd_config
+	"	137	26
+	^	137	27
+	.	137	26
+	+	129	8
+	+	137	26
+
+> /etc/sshd_banner
+	"	52	0
+	^	52	0
+	.	51	100
+	+	1	0
+	+	51	100
+
+> /etc/passwd
+	"	26	0
+
+> /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip/pjsip_options.c
+	"	324	14
+
+> ~/qualify-peers.pl
+	"	60	0
+	^	74	1
+	.	75	0
+	+	75	0

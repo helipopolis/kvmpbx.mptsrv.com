@@ -1,0 +1,503 @@
+[general]
+context=public                  ; Default context for incoming calls. Defaults to 'default'
+allowguest=no                   ; Allow or reject guest calls (default is yes)
+allowoverlap=no                 ; Disable overlap dialing support. (Default is yes)
+udpbindaddr=0.0.0.0             ; IP address to bind UDP listen socket to (0.0.0.0 binds to all)
+                                ; Optionally add a port number, 192.168.1.1:5062 (default is port 5060)
+tcpenable=no                    ; Enable server for incoming TCP connections (default is no)
+srvlookup=yes                    ; Enable DNS SRV lookups on outbound calls
+
+language=ru                     ; Default language setting for all users/peers
+                                ; This may also be set for individual users/peers
+tonezone=ru                     ; Default tonezone for all users/peers
+
+relaxdtmf=no
+                                ; authenticate with Asterisk. Peerstatus will be "rejected".
+alwaysauthreject=yes         ; When an incoming INVITE or REGISTER is to be rejected,
+
+accept_outofcall_message = yes
+outofcall_message_context = messages
+auth_message_requests = no
+
+;localnet=192.168.0.0/24
+;localnet=10.10.10.0/24
+;localnet=172.20.0.0/24
+;externip=212.45.19.165
+
+
+;register=>74997097761:Ammuasbo12375@voip.mtt.ru/74997097761
+
+;egister=>74956609620:DfsRdQjU:398171687291@sip.mtt.ru/74956609620
+;register=>74956609621:Y9iZGPB2:398258068322@sip.mtt.ru/74956609621
+;register=>74956609622:YKEU9JEn:398355780817@sip.mtt.ru/74956609622
+
+;register=>883140776008260:sYFT3787@voip.mtt.ru/883140776008260 ;Youmagic-valun-1
+;register=>883140776008258:AB4rByWU@voip.mtt.ru/883140776008258 ;Youmagic-valun-2
+
+[asterisk_mchs]
+context=to-mchs-only
+host=192.168.0.199
+qualify=no
+type=friend
+disallow=all
+allow=alaw
+allow=ulaw
+dtmfmode=rfc2833
+canreinvite=no
+;insecure=very
+nat=no
+
+;[Youmagic_Efimenko]
+;username=74997097761
+;type=friend
+;secret=Ammuasbo12375
+;qualify=no
+;insecure=port,invite
+;host=voip.mtt.ru
+;fromuser=74997097761
+;fromdomain=voip.mtt.ru
+;dtmfmode=rfc2833
+;disallow=all
+;allow=!all,ulaw,alaw,g729
+;context=from-trunk
+
+;[MTT_MPTS1]
+; context=from-trunk
+; callerid=<74956609620>
+; username=398171687291
+; type=friend
+; secret=DfsRdQjU
+; qualify=no
+; insecure=port,invite
+; host=sip.mtt.ru
+; fromuser=74956609620
+; fromdomain=sip.mtt.ru
+; dtmfmode=rfc2833
+; disallow=all
+; allow=!all,ulaw,alaw,g729
+
+;[MTT_MPTS2]
+; context=from-trunk
+; callerid=<74956609621>
+; username=398258068322
+; type=friend
+; secret=Y9iZGPB2
+; qualify=no
+; insecure=port,invite
+; host=sip.mtt.ru
+; fromuser=74956609621
+; fromdomain=sip.mtt.ru
+; dtmfmode=rfc2833
+; disallow=all
+; allow=!all,ulaw,alaw,g729
+
+;[MTT_MPTS3]
+; context=from-trunk
+; callerid=<74956609622>
+; username=398355780817
+; type=friend
+; secret=YKEU9JEn
+; qualify=no
+; insecure=port,invite
+; host=sip.mtt.ru
+; fromuser=74956609622
+; fromdomain=sip.mtt.ru
+; dtmfmode=rfc2833
+; disallow=all
+; allow=!all,ulaw,alaw,g729
+
+[Econotel]
+context=from-trunk
+callerid=4956609620
+type=friend
+relaxdtmf=yes
+host=79.135.231.2
+dtmf=inband
+dtfmode=inband
+disallow=all
+allow=!all,ulaw,alaw
+insecure=port,invite
+
+
+[TDE]
+context=long-distance
+username=TDE
+type=friend
+secret=gfhfyjqz2000
+qualify=no
+nat=no
+host=dynamic
+dtmfmode=rfc2833
+disallow=all
+allow=!all,ulaw,alaw,g729
+canreinvite=no
+directmedia=no
+
+[Kharkov]
+username=Kharkov
+type=friend
+secret=gfhfyjqz2000
+qualify=yes
+host=dynamic
+dtmfmode=rfc2833
+disallow=all
+allow=g729
+context=from-kharkov
+canreinvite=no
+nat=force_rport,comedia
+
+[valun]
+username=valun
+type=friend
+secret=gfhfyjqz2000
+qualify=no
+nat=no
+host=dynamic
+dtmfmode=rfc2833
+disallow=all
+allow=g729
+context=valun-only
+canreinvite=no
+
+;[Youmagic_Valun1]
+;context=from-trunk
+;username=883140776008258
+;type=friend
+;secret=AB4rByWU
+;qualify=no
+;insecure=port,invite
+;host=voip.mtt.ru
+;fromuser=883140776008258
+;fromdomain=voip.mtt.ru
+;dtmfmode=rfc2833
+;disallow=all
+;allow=!all,ulaw,alaw,g729
+
+
+;[Youmagic_Valun2]
+;context=from-trunk
+;username=883140776008260
+;type=friend
+;secret=sYFT3787
+;qualify=no
+;insecure=port,invite
+;host=voip.mtt.ru
+;fromuser=883140776008260
+;fromdomain=voip.mtt.ru
+;dtmfmode=rfc2833
+;disallow=all
+;allow=!all,ulaw,alaw,g729
+
+[common-ra-options](!)
+context=radioactivity
+pedantic=yes
+disallow=all
+allow=ulaw
+dtmfmode=rfc2833
+directmedia=no
+nat=no
+qualify=no
+type=friend
+host=dynamic
+
+[common-options](!)
+disallow=all
+allow=!all,ulaw,alaw,g729
+host=dynamic
+secret=qwerty123
+qualify=no
+type=friend
+directmedia=nonat
+
+
+[common-options-natted-phone](!,common-options)
+nat=force_rport,comedia
+
+
+[local-ACL](!)
+deny=0.0.0.0/0.0.0.0
+permit=192.168.0.0/255.255.255.0
+
+[common-mchs-only](!,common-options-natted-phone)
+context=to-mchs-only
+
+[common-local-only](!,common-options-natted-phone)
+context=local-only-pstn
+
+[common-local-only-office](!,common-options)
+context=local-only-pstn
+
+[common-long-distance-office](!,common-options)
+context=long-distance
+
+[common-long-distance](!,common-options-natted-phone)
+context=long-distance
+
+
+
+[valun-common](!,common-options-natted-phone)
+context=valun-only
+
+[4101](valun-common)
+secret=ghjcnj123
+callerid=Анадырь
+
+[4200](common-long-distance)
+secret=gfhfyjqz2000
+callerid=Васильев<4200>
+context=efimenko
+;context=valun-only
+
+[4201](common-long-distance-office)
+secret=gfhfyjqz2000
+callerid=Ефименко<4201>
+context=efimenko
+
+[4202](common-long-distance)
+secret=ammuasbo12375
+callerid=Каспер<4202>
+accountcode=1
+
+[4203](common-long-distance)
+secret=Ammuasbo12375
+callerid=Андриевский<4203>
+
+[4204](common-local-only)
+secret=dshfhf6_hh
+callerid=Гилев<4204>
+
+[4205](common-long-distance)
+secret=aaa19631967
+callerid=Андрюшин<4205>
+
+[4206](common-long-distance)
+secret=YTs_XWkE2000
+callerid=Ефименко дача<4206>
+context=efimenko
+
+[4207](common-long-distance)
+secret=YTs_XWkE2000
+callerid=Ефименко дача<4207>
+context=efimenko
+
+[4208](common-long-distance)
+secret=Oohee0Ho
+callerid=Бородин<4208>
+directmedia=nonat
+
+[4209](common-long-distance)
+secret=gfghjs663jk
+callerid=Миколенко<4209>
+
+[4210](common-long-distance)
+secret=YTs_XWkE123456
+callerid=Яковлев<4210>
+
+[4211](common-long-distance-office)
+secret=ammuasbo12375
+callerid=Сорокин
+
+[4212](common-local-only)
+secret=gfhfyjqz2020
+callerid=Васильев<4212>
+
+[4213](common-local-only)
+secret=ammuasbo12375
+callerid=Миколенко<4213>
+
+[4214](common-long-distance)
+secret=@cTepuck2014
+callerid=Костенко.Харьков<4214>
+
+[4215](common-long-distance)
+secret=ksdhfuhb6whn3
+callerid=Миколенко моб<4215>
+
+[4216](common-long-distance)
+secret=Ammuasbo12375
+callerid=Вован<4216>
+;disallow=all
+;allow=!all,g729
+
+[4217](common-long-distance)
+secret=fc29c1e0bf40d1a
+callerid=IBM<4217>
+
+[4218](common-long-distance)
+secret=fc29c1e0bf40d1a
+callerid=IBM<4218>
+
+[4219](common-local-only)
+secret=Oohee0Ho
+callerid=Марат<4219>
+
+[4220](common-long-distance)
+secret=gfhfyjqz2000
+callerid=Ефименко моб.<4220>
+context=efimenko
+
+[4221](common-local-only)
+secret=509608c09ffe
+callerid=Андриевский<4221>
+
+[4222](common-long-distance)
+secret=ammuasbo12375
+callerid=<3036>
+accountcode=1
+
+[4223](common-long-distance)
+secret=ahg3Cha0
+callerid=INN
+
+[4224](common-long-distance)
+secret=YTs_XWkE23456
+callerid=Долонский<4224>
+
+[4225](common-long-distance)
+secret=Dsht24ff
+callerid=Перловка<4225>
+
+[4226](common-local-only)
+secret=simple-pass123
+
+[4227](common-local-only)
+callerid=Николай Ефименко<4227>
+secret=77656e80dd
+
+[4228](common-local-only)
+secret=ff7b3e8f39f
+callerid=Лариса Ярмак<4228>
+
+[4229](common-local-only)
+callerid=Нила Петровна<4229>
+secret=ff7b3e8f39f
+
+[4230](common-local-only)
+callerid=Рехсон Дмитрий<4230>
+secret=Gt54nki3
+
+[4231](common-mchs-only)
+callerid=Кисилев Александр<4231>
+secret=jofyaph8
+
+[4232](common-long-distance)
+secret=YTs_XWkE23456
+callerid=Долонский<4232>
+
+[4233](common-mchs-only)
+secret=Udenewg5
+callerid=Нач.Связи ГУ<4233>
+
+[4234](common-long-distance-office)
+secret=ammuasbo
+callerid=Пичурин<3039>
+
+[4235](common-mchs-only)
+callerid=МЧС<4231>
+secret=ksjfgt123
+
+[4236](common-local-only)
+secret=ammuasbo12375
+callerid=Мирный<4209>
+
+[4237](common-local-only)
+secret=ammuasbo12375
+callerid=Курафеев<4237>
+
+[4238](common-local-only)
+secret=ammuasbo12375
+callerid=Ильин<4238>
+
+[4242](common-long-distance)
+secret=iboom1Eo
+callerid=Бородин моб.<4242>
+
+[4250](common-long-distance-office)
+secret=ammuasbo
+callerid=Мордачёва Юлия<4250>
+
+[4298](common-long-distance)
+secret=gfhfyjqz
+
+[4299](common-long-distance)
+secret=gfhfyjqz
+
+[15350](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15350>
+
+[15351](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15351>
+
+[15352](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15352>
+
+[15353](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15353>
+
+[15354](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15354>
+
+[15355](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15355>
+
+[15356](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15356>
+
+[15357](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15357>
+
+[15358](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15358>
+
+[15359](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15359>
+
+[15360](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15360>
+
+[15361](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15361>
+
+[15362](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15362>
+
+[15363](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15363>
+
+[15364](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15364>
+
+[15365](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15365>
+
+[15366](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15366>
+
+[15367](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15367>
+
+[15368](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15368>
+
+[15369](common-mchs-only)
+secret=Udenewg5
+callerid=МЧС<15369>
