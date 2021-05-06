@@ -8,14 +8,14 @@
 # hlsearch on (H) or off (h):
 ~h
 # Последний Шаблон поиска:
-~MSle0~/recidive
+~MSle0~/Gosub
 
 # Последняя строка для замены:
 $
 
 # Командная строка, история (начиная от свежего к старому):
-:wq
 :q
+:wq
 :q!
 :1
 :w
@@ -27,6 +27,9 @@ $
 :Wq
 
 # Строка поиска, история (начиная от свежего к старому):
+?/Gosub
+?/monitor
+?/sub-dial-simple-exten
 ?/recidive
 ?/2998
 ? \Vsame\%#
@@ -74,9 +77,6 @@ $
 ??планер
 ?/administrator
 ?/intercom
-?/[handler
-?/sip:
-?/PJSIP_HEADER
 
 # Выражение, история (начиная от свежего к старому):
 
@@ -85,40 +85,121 @@ $
 # Строка ввода, история (начиная от свежего к старому):
 
 # Регистры:
-"1	LINE	0
-	IPV6_ADDR_GEN_MODE=stable-privacy
-"2	LINE	0
-	IPV6_FAILURE_FATAL=no
-"3	LINE	0
-	IPV6_DEFROUTE=yes
-"4	LINE	0
-	IPV6_AUTOCONF=yes
-"5	LINE	0
-	IPV6_ADDR_GEN_MODE=stable-privacy
-"6	LINE	0
-	IPV6_FAILURE_FATAL=no
-"7	LINE	0
-	IPV6_DEFROUTE=yes
-"8	LINE	0
-	IPV6_AUTOCONF=yes
-"9	LINE	0
+""1	LINE	0
 	
-""-	CHAR	0
+"2	LINE	0
+	depends on asterisk
+"3	LINE	0
+	stop program = "/root/aster_eventwatching_daemon --host=10.1.1.81 --user=callmanager --secret=asterisk --dbhost=localhost --dbuser=asterisk --dbsecret=asterisk stop"
+"4	LINE	0
+	start program = "/root/aster_eventwatching_daemon --host=10.1.1.81 --user=callmanager --secret=asterisk --dbhost=localhost --dbuser=asterisk --dbsecret=asterisk start"
+"5	LINE	0
+	check process aster-event-watch with pidfile /var/run/aster_eventwatcher_app.pid
+"6	LINE	0
+	
+"7	LINE	0
+	depends on mysqld
+"8	LINE	0
+	stop program = "/sbin/service asterisk stop"
+"9	LINE	0
+	start program = "/sbin/service asterisk start"
+"-	CHAR	0
 	0
 
 # Глобальные отметки:
-'0  1  0  /var/www/html/index.html
-'1  1  0  /etc/httpd/conf.d/userdir.conf
-'2  7  26  /etc/httpd/conf.d/yealink.conf
-'3  176  4  /etc/httpd/conf.d/ssl.conf
-'4  1  0  /etc/httpd/conf.d/php.conf
-'5  83  0  /etc/httpd/conf.d/autoindex.conf
-'6  1  0  /etc/httpd/conf.d/asterisk-cdr-viewer.conf
-'7  8  0  /etc/httpd/conf.d/addressbook.conf
-'8  21  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
-'9  6  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
+'0  1  0  /etc/monit.d/ntpd
+'1  2  31  /etc/sysconfig/ntpd
+'2  1  0  /usr/lib/systemd/system/ntpd.service
+'3  2  0  /etc/monit.d/ntpd
+'4  1  0  /etc/ntp.conf
+'5  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
+'6  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
+'7  129  16  /etc/asterisk/extensions.conf
+'8  85  0  /etc/asterisk/extensions.conf
+'9  80  14  /etc/asterisk/extensions.conf
 
 # Список прыжков (сначала более свежие):
+-'  1  0  /etc/monit.d/ntpd
+-'  2  31  /etc/sysconfig/ntpd
+-'  1  0  /usr/lib/systemd/system/ntpd.service
+-'  2  0  /etc/monit.d/ntpd
+-'  1  0  /etc/sysconfig/ntpd
+-'  1  0  /etc/ntp.conf
+-'  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
+-'  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
+-'  129  16  /etc/asterisk/extensions.conf
+-'  85  0  /etc/asterisk/extensions.conf
+-'  80  14  /etc/asterisk/extensions.conf
+-'  65  15  /etc/asterisk/extensions.conf
+-'  501  0  /var/www/yealink/y000000000077.cfg
+-'  1  0  /var/www/yealink/y000000000077.cfg
+-'  500  31  /var/www/yealink/y000000000066.cfg
+-'  1  0  /var/www/yealink/y000000000066.cfg
+-'  1295  0  /var/www/yealink/y000000000065.cfg
+-'  1  0  /var/www/yealink/y000000000065.cfg
+-'  497  49  /var/www/yealink/y000000000053.cfg
+-'  493  38  /var/www/yealink/y000000000053.cfg
+-'  501  0  /var/www/yealink/y000000000046.cfg
+-'  1  0  /var/www/yealink/y000000000046.cfg
+-'  498  0  /var/www/yealink/y000000000044.cfg
+-'  1  0  /var/www/yealink/y000000000044.cfg
+-'  1282  0  /var/www/yealink/y000000000035.cfg
+-'  498  7  /var/www/yealink/y000000000035.cfg
+-'  1  0  /var/www/yealink/y000000000035.cfg
+-'  17  0  /var/www/yealink/y000000000000.cfg
+-'  1297  0  /var/www/yealink/y000000000000.cfg
+-'  20  28  /var/www/yealink/y000000000005.cfg
+-'  13  0  /var/www/yealink/y000000000005.cfg
+-'  55  30  /var/www/yealink/y000000000028.cfg
+-'  1294  0  /var/www/yealink/y000000000028.cfg
+-'  1275  0  /var/www/yealink/y000000000031.cfg
+-'  49  24  /var/www/yealink/y000000000031.cfg
+-'  1  0  /var/www/yealink/y000000000031.cfg
+-'  481  0  /var/www/yealink/y000000000028.cfg
+-'  1  0  /var/www/yealink/y000000000028.cfg
+-'  644  27  /var/www/yealink/y000000000005.cfg
+-'  646  9  /var/www/yealink/y000000000000.cfg
+-'  46  16  /etc/asterisk/extensions.conf
+-'  1  5  /etc/asterisk/extensions.conf
+-'  2  51  /etc/asterisk/extensions.conf
+-'  138  1  /etc/asterisk/extensions.conf
+-'  3  64  /etc/yum.repos.d/sngrep.repo
+-'  1  0  /etc/yum.repos.d/sngrep.repo
+-'  257  41  /etc/asterisk/extensions.conf
+-'  241  17  /etc/asterisk/extensions.conf
+-'  240  20  /etc/asterisk/extensions.conf
+-'  236  17  /etc/asterisk/extensions.conf
+-'  235  17  /etc/asterisk/extensions.conf
+-'  234  20  /etc/asterisk/extensions.conf
+-'  230  22  /etc/asterisk/extensions.conf
+-'  209  30  /etc/asterisk/extensions.conf
+-'  206  36  /etc/asterisk/extensions.conf
+-'  205  31  /etc/asterisk/extensions.conf
+-'  204  31  /etc/asterisk/extensions.conf
+-'  182  28  /etc/asterisk/extensions.conf
+-'  180  24  /etc/asterisk/extensions.conf
+-'  179  28  /etc/asterisk/extensions.conf
+-'  161  31  /etc/asterisk/extensions.conf
+-'  160  31  /etc/asterisk/extensions.conf
+-'  159  31  /etc/asterisk/extensions.conf
+-'  158  31  /etc/asterisk/extensions.conf
+-'  157  31  /etc/asterisk/extensions.conf
+-'  127  24  /etc/asterisk/extensions.conf
+-'  126  24  /etc/asterisk/extensions.conf
+-'  125  23  /etc/asterisk/extensions.conf
+-'  123  23  /etc/asterisk/extensions.conf
+-'  122  23  /etc/asterisk/extensions.conf
+-'  121  23  /etc/asterisk/extensions.conf
+-'  120  23  /etc/asterisk/extensions.conf
+-'  119  23  /etc/asterisk/extensions.conf
+-'  118  24  /etc/asterisk/extensions.conf
+-'  117  27  /etc/asterisk/extensions.conf
+-'  113  23  /etc/asterisk/extensions.conf
+-'  90  25  /etc/asterisk/extensions.conf
+-'  83  17  /etc/asterisk/extensions.conf
+-'  82  17  /etc/asterisk/extensions.conf
+-'  2  28  /etc/sysconfig/network-scripts/route-eth0
+-'  1  0  /etc/sysconfig/network-scripts/route-eth0
 -'  1  0  /var/www/html/index.html
 -'  1  0  /etc/httpd/conf.d/userdir.conf
 -'  7  26  /etc/httpd/conf.d/yealink.conf
@@ -135,88 +216,260 @@ $
 -'  11  61  /etc/httpd/conf.d/pbx.seligdar.ru.conf
 -'  87  0  /etc/httpd/conf/httpd.conf
 -'  127  0  /etc/httpd/conf/httpd.conf
--'  8  60  /etc/httpd/conf.d/pbx.seligdar.ru.conf
--'  34  60  /etc/httpd/conf.d/ssl.conf
--'  1  0  /etc/sysconfig/network-scripts/route-eth0
--'  180  28  /etc/asterisk/manager.conf
--'  158  12  /etc/asterisk/manager.conf
--'  1  0  /etc/asterisk/manager.conf
--'  12  64  /etc/monit.d/asterisk
--'  8  16  /etc/monit.d/asterisk
--'  6  45  /etc/monit.d/asterisk
--'  11  0  /etc/rc.local
--'  2  77  /etc/hosts
--'  1  0  /etc/hosts
--'  750  1  /etc/fail2ban/jail.conf
--'  615  0  /etc/fail2ban/jail.conf
--'  751  0  /etc/fail2ban/jail.conf
--'  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
--'  9  8  /etc/sysconfig/network-scripts/ifcfg-eth0
--'  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
--'  8  8  /etc/sysconfig/network-scripts/ifcfg-eth1
--'  115  0  /etc/asterisk/extconfig.conf
--'  82  0  /etc/asterisk/extconfig.conf
--'  11  0  /etc/asterisk/res_odbc.conf
--'  53  0  /etc/asterisk/sorcery.conf
--'  1  0  /etc/asterisk/sorcery.conf
--'  33  18  /etc/asterisk/cdr_adaptive_odbc.conf
--'  34  8  /etc/asterisk/cdr_adaptive_odbc.conf
--'  6  0  /etc/asterisk/res_odbc.conf
--'  17  1  /etc/odbc.ini
--'  7  0  /etc/odbc.ini
--'  24  0  /etc/odbcinst.ini
--'  5  30  /etc/hosts
--'  3  28  /etc/hosts
--'  594  12  /etc/asterisk/extensions.conf
--'  593  18  /etc/asterisk/extensions.conf
--'  521  45  /etc/asterisk/extensions.conf
--'  766  35  /etc/asterisk/extensions.conf
--'  772  37  /etc/asterisk/extensions.conf
--'  768  45  /etc/asterisk/extensions.conf
--'  712  0  /etc/asterisk/extensions.conf
--'  730  0  /etc/asterisk/extensions.conf
--'  37  11  /usr/src/max/check-gateways.sh
--'  83  0  /usr/src/max/check-gateways.sh
--'  1  16  /etc/sysconfig/network-scripts/rule-eth2
--'  1  0  /etc/sysconfig/network-scripts/rule-eth1
--'  1  24  /etc/sysconfig/network-scripts/route-eth2
--'  1  0  /etc/sysconfig/network-scripts/route-eth1
--'  1  0  /usr/src/max/check-gateways.sh
--'  29  16  /usr/src/max/check-gateways.sh
--'  8  20  /etc/sysconfig/network-scripts/ifcfg-eth2
--'  11  10  /etc/sysconfig/network-scripts/ifcfg-eth2
--'  731  12  /etc/asterisk/extensions.conf
--'  733  47  /etc/asterisk/extensions.conf
--'  732  4  /etc/asterisk/extensions.conf
--'  1299  13  /etc/asterisk/extensions.conf
--'  1172  11  /etc/asterisk/extensions.conf
--'  1155  11  /etc/asterisk/extensions.conf
--'  1136  11  /etc/asterisk/extensions.conf
--'  1118  11  /etc/asterisk/extensions.conf
--'  898  14  /etc/asterisk/extensions.conf
--'  889  14  /etc/asterisk/extensions.conf
--'  880  14  /etc/asterisk/extensions.conf
--'  874  14  /etc/asterisk/extensions.conf
--'  868  14  /etc/asterisk/extensions.conf
--'  862  14  /etc/asterisk/extensions.conf
--'  855  14  /etc/asterisk/extensions.conf
--'  849  14  /etc/asterisk/extensions.conf
--'  843  14  /etc/asterisk/extensions.conf
--'  836  14  /etc/asterisk/extensions.conf
--'  829  14  /etc/asterisk/extensions.conf
--'  821  14  /etc/asterisk/extensions.conf
--'  814  14  /etc/asterisk/extensions.conf
--'  807  14  /etc/asterisk/extensions.conf
--'  799  14  /etc/asterisk/extensions.conf
--'  793  14  /etc/asterisk/extensions.conf
--'  787  1  /etc/asterisk/extensions.conf
--'  1223  17  /etc/asterisk/extensions.conf
--'  1111  0  /etc/asterisk/extensions.conf
--'  1300  60  /etc/asterisk/extensions.conf
--'  1301  5  /etc/asterisk/extensions.conf
--'  424  1  /etc/asterisk/extensions.conf
 
 # История местных отметок (от более свежих к старым):
+
+> /etc/monit.d/ntpd
+	"	1	0
+	^	1	18
+	.	1	17
+	+	4	0
+	+	2	45
+	+	3	43
+	+	1	17
+
+> /etc/sysconfig/ntpd
+	"	2	31
+	^	2	32
+	.	2	15
+	+	2	15
+
+> /usr/lib/systemd/system/ntpd.service
+	"	1	0
+
+> /etc/ntp.conf
+	"	1	0
+
+> /etc/sysconfig/network-scripts/ifcfg-eth1
+	"	16	11
+	^	16	12
+	.	16	11
+	+	17	0
+	+	21	13
+	+	8	0
+	+	4	15
+	+	8	0
+	+	16	11
+
+> /etc/sysconfig/network-scripts/ifcfg-eth0
+	"	13	20
+	^	13	21
+	.	13	20
+	+	5	10
+	+	4	13
+	+	8	0
+	+	9	8
+	+	8	0
+	+	4	15
+	+	11	10
+	+	5	10
+	+	14	0
+	+	4	15
+	+	13	20
+
+> /etc/asterisk/extensions.conf
+	"	129	16
+	^	129	17
+	.	129	16
+	+	717	0
+	+	717	10
+	+	717	110
+	+	717	48
+	+	718	48
+	+	719	36
+	+	720	35
+	+	721	150
+	+	371	0
+	+	379	0
+	+	366	0
+	+	705	58
+	+	1089	54
+	+	1089	14
+	+	1107	14
+	+	1126	14
+	+	1147	1
+	+	429	66
+	+	541	59
+	+	543	17
+	+	545	22
+	+	547	17
+	+	549	17
+	+	551	17
+	+	553	17
+	+	555	17
+	+	557	17
+	+	559	17
+	+	561	17
+	+	563	17
+	+	565	17
+	+	545	59
+	+	547	59
+	+	549	59
+	+	551	59
+	+	553	59
+	+	555	59
+	+	557	59
+	+	559	59
+	+	561	59
+	+	563	59
+	+	565	59
+	+	1154	107
+	+	1152	0
+	+	1152	169
+	+	1154	1
+	+	1154	135
+	+	1152	19
+	+	1154	0
+	+	1155	0
+	+	471	0
+	+	471	0
+	+	471	0
+	+	462	0
+	+	461	0
+	+	458	60
+	+	452	66
+	+	448	66
+	+	444	66
+	+	444	0
+	+	438	0
+	+	440	0
+	+	439	0
+	+	431	66
+	+	431	0
+	+	425	74
+	+	656	67
+	+	1149	71
+	+	1151	1
+	+	1150	0
+	+	1150	32
+	+	142	0
+	+	142	31
+	+	410	0
+	+	142	55
+	+	656	76
+	+	425	51
+	+	504	63
+	+	1152	1
+	+	656	22
+	+	424	59
+	+	1301	1
+	+	1301	14
+	+	1301	0
+	+	1301	74
+	+	1302	0
+	+	1303	0
+	+	1303	9
+	+	1302	42
+	+	1301	14
+	+	734	0
+	+	734	8
+	+	735	47
+	+	733	59
+	+	595	29
+	+	596	12
+	+	596	12
+	+	80	14
+	+	85	0
+	+	129	16
+
+> /var/www/yealink/y000000000077.cfg
+	"	501	0
+	^	500	51
+	.	500	49
+	+	498	0
+	+	497	45
+	+	500	49
+
+> /var/www/yealink/y000000000066.cfg
+	"	500	31
+	^	500	32
+	.	500	31
+	+	498	0
+	+	497	45
+	+	500	31
+
+> /var/www/yealink/y000000000065.cfg
+	"	1295	0
+	^	1295	0
+	.	500	49
+	+	499	0
+	+	497	45
+	+	500	49
+
+> /var/www/yealink/y000000000053.cfg
+	"	497	49
+	^	497	51
+	.	497	49
+	+	494	45
+	+	497	49
+
+> /var/www/yealink/y000000000046.cfg
+	"	501	0
+	^	500	51
+	.	500	49
+	+	497	45
+	+	500	49
+
+> /var/www/yealink/y000000000044.cfg
+	"	498	0
+	^	497	51
+	.	497	49
+	+	493	45
+	+	497	49
+
+> /var/www/yealink/y000000000035.cfg
+	"	1282	0
+	^	499	51
+	.	499	49
+	+	498	0
+	+	498	0
+	+	496	46
+	+	499	49
+
+> /var/www/yealink/y000000000000.cfg
+	"	17	0
+
+> /var/www/yealink/y000000000005.cfg
+	"	20	28
+	^	20	29
+	.	20	28
+	+	20	28
+
+> /var/www/yealink/y000000000028.cfg
+	"	55	30
+	^	55	31
+	.	55	30
+	+	24	28
+	+	497	45
+	+	498	0
+	+	500	49
+	+	51	24
+	+	55	30
+
+> /var/www/yealink/y000000000031.cfg
+	"	1275	0
+	^	499	51
+	.	499	49
+	+	49	24
+	+	53	30
+	+	496	45
+	+	499	49
+
+> /etc/yum.repos.d/sngrep.repo
+	"	3	64
+	^	3	65
+	.	3	0
+	+	7	0
+	+	6	0
+	+	5	0
+	+	3	0
+
+> /etc/sysconfig/network-scripts/route-eth0
+	"	2	28
+	^	2	26
+	.	2	0
+	+	1	28
+	+	2	0
 
 > /var/www/html/index.html
 	"	1	0
@@ -361,9 +614,6 @@ $
 	+	150	55
 	+	42	0
 
-> /etc/sysconfig/network-scripts/route-eth0
-	"	1	0
-
 > /etc/asterisk/manager.conf
 	"	180	28
 	^	180	29
@@ -415,33 +665,6 @@ $
 	+	700	126
 	+	701	0
 	+	750	11
-
-> /etc/sysconfig/network-scripts/ifcfg-eth0
-	"	13	20
-	^	13	21
-	.	13	20
-	+	5	10
-	+	4	13
-	+	8	0
-	+	9	8
-	+	8	0
-	+	4	15
-	+	11	10
-	+	5	10
-	+	14	0
-	+	4	15
-	+	13	20
-
-> /etc/sysconfig/network-scripts/ifcfg-eth1
-	"	16	11
-	^	16	12
-	.	16	11
-	+	17	0
-	+	21	13
-	+	8	0
-	+	4	15
-	+	8	0
-	+	16	11
 
 > /etc/asterisk/extconfig.conf
 	"	115	0
@@ -496,111 +719,6 @@ $
 	+	26	0
 	+	25	29
 	+	24	12
-
-> /etc/asterisk/extensions.conf
-	"	594	12
-	^	594	13
-	.	594	12
-	+	709	22
-	+	712	0
-	+	712	159
-	+	715	0
-	+	715	10
-	+	715	110
-	+	715	48
-	+	716	48
-	+	717	36
-	+	718	35
-	+	719	150
-	+	369	0
-	+	377	0
-	+	364	0
-	+	703	58
-	+	1087	54
-	+	1087	14
-	+	1105	14
-	+	1124	14
-	+	1145	1
-	+	427	66
-	+	539	59
-	+	541	17
-	+	543	22
-	+	545	17
-	+	547	17
-	+	549	17
-	+	551	17
-	+	553	17
-	+	555	17
-	+	557	17
-	+	559	17
-	+	561	17
-	+	563	17
-	+	543	59
-	+	545	59
-	+	547	59
-	+	549	59
-	+	551	59
-	+	553	59
-	+	555	59
-	+	557	59
-	+	559	59
-	+	561	59
-	+	563	59
-	+	1152	107
-	+	1150	0
-	+	1150	169
-	+	1152	1
-	+	1152	135
-	+	1150	19
-	+	1152	0
-	+	1153	0
-	+	469	0
-	+	469	0
-	+	469	0
-	+	460	0
-	+	459	0
-	+	456	60
-	+	450	66
-	+	446	66
-	+	442	66
-	+	442	0
-	+	436	0
-	+	438	0
-	+	437	0
-	+	429	66
-	+	429	0
-	+	423	74
-	+	654	67
-	+	1147	71
-	+	1149	1
-	+	1148	0
-	+	1148	32
-	+	140	0
-	+	140	31
-	+	408	0
-	+	140	55
-	+	654	76
-	+	423	51
-	+	502	63
-	+	1150	1
-	+	654	22
-	+	422	59
-	+	1299	1
-	+	1299	14
-	+	1299	0
-	+	1299	74
-	+	1300	0
-	+	1301	0
-	+	1301	9
-	+	1300	42
-	+	1299	14
-	+	732	0
-	+	732	8
-	+	733	47
-	+	731	59
-	+	593	29
-	+	594	12
-	+	594	12
 
 > /usr/src/max/check-gateways.sh
 	"	37	11
@@ -870,14 +988,6 @@ $
 > ~/backup_mysql.sh
 	"	1	0
 
-> /etc/yum.repos.d/sngrep.repo
-	"	3	64
-	^	3	65
-	.	3	0
-	+	5	0
-	+	4	0
-	+	3	0
-
 > /etc/asterisk/extensionss.co
 	"	1	0
 
@@ -896,13 +1006,6 @@ $
 
 > /etc/asterisk/extensions.cio
 	"	1	0
-
-> /var/www/yealink/y000000000000.cfg
-	"	646	9
-
-> /var/www/yealink/y000000000005.cfg
-	"	644	27
-	^	643	26
 
 > /etc/asterisk/extensions.ael
 	"	536	7
@@ -978,9 +1081,6 @@ $
 > /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip_sips_contact.c
 	"	1	0
 
-> /etc/ntp.conf
-	"	1	0
-
 > /usr/src/asterisk-certified-16.8-cert3/configs/samples/extconfig.conf.sample
 	"	80	0
 
@@ -989,66 +1089,3 @@ $
 
 > /var/www/html/congestion/query.php
 	"	1	0
-
-> /var/www/html/conf/query.php
-	"	1	0
-
-> /var/www/yealink/.htaccess
-	"	1	20
-	^	1	21
-	.	2	0
-	+	1	46
-	+	1	20
-	+	1	45
-	+	1	46
-	+	1	21
-	+	2	0
-	+	2	0
-
-> /var/www/html/.htpasswd
-	"	1	0
-
-> /etc/httpd/conf.d/pbx.seligdar.ru
-	"	1	0
-
-> /var/www/yealink/y000000000053.cfg
-	"	493	38
-
-> /etc/fail2ban/paths-fedora.conf
-	"	20	0
-	^	20	0
-	.	19	2
-	+	19	2
-
-> /etc/ssh/sshd_banner
-	"	22	0
-	^	22	0
-	.	21	24
-	+	1	33
-	+	21	24
-
-> /etc/ssh/sshd_config
-	"	137	26
-	^	137	27
-	.	137	26
-	+	129	8
-	+	137	26
-
-> /etc/sshd_banner
-	"	52	0
-	^	52	0
-	.	51	100
-	+	1	0
-	+	51	100
-
-> /etc/passwd
-	"	26	0
-
-> /usr/src/asterisk-certified-16.8-cert3/res/res_pjsip/pjsip_options.c
-	"	324	14
-
-> ~/qualify-peers.pl
-	"	60	0
-	^	74	1
-	.	75	0
-	+	75	0
