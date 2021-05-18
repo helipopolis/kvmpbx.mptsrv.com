@@ -14,8 +14,8 @@
 $
 
 # Командная строка, история (начиная от свежего к старому):
-:q
 :wq
+:q
 :q!
 :1
 :w
@@ -107,18 +107,20 @@ $
 	0
 
 # Глобальные отметки:
-'0  1  0  /etc/monit.d/ntpd
-'1  2  31  /etc/sysconfig/ntpd
-'2  1  0  /usr/lib/systemd/system/ntpd.service
-'3  2  0  /etc/monit.d/ntpd
-'4  1  0  /etc/ntp.conf
-'5  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
-'6  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
-'7  129  16  /etc/asterisk/extensions.conf
-'8  85  0  /etc/asterisk/extensions.conf
-'9  80  14  /etc/asterisk/extensions.conf
+'0  6  20  /usr/src/letsencrypt-renew.sh
+'1  1  0  /etc/monit.d/ntpd
+'2  2  31  /etc/sysconfig/ntpd
+'3  1  0  /usr/lib/systemd/system/ntpd.service
+'4  2  0  /etc/monit.d/ntpd
+'5  1  0  /etc/ntp.conf
+'6  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
+'7  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
+'8  129  16  /etc/asterisk/extensions.conf
+'9  85  0  /etc/asterisk/extensions.conf
 
 # Список прыжков (сначала более свежие):
+-'  6  20  /usr/src/letsencrypt-renew.sh
+-'  1  0  /usr/src/letsencrypt-renew.sh
 -'  1  0  /etc/monit.d/ntpd
 -'  2  31  /etc/sysconfig/ntpd
 -'  1  0  /usr/lib/systemd/system/ntpd.service
@@ -218,6 +220,18 @@ $
 -'  127  0  /etc/httpd/conf/httpd.conf
 
 # История местных отметок (от более свежих к старым):
+
+> /usr/src/letsencrypt-renew.sh
+	"	6	20
+	^	6	21
+	.	6	0
+	+	7	20
+	+	8	58
+	+	10	18
+	+	11	20
+	+	12	0
+	+	1	19
+	+	6	0
 
 > /etc/monit.d/ntpd
 	"	1	0
@@ -973,17 +987,6 @@ $
 	+	92	0
 	+	93	0
 	+	83	0
-
-> /usr/src/letsencrypt-renew.sh
-	"	1	0
-	^	1	19
-	.	1	18
-	+	2	20
-	+	3	58
-	+	5	18
-	+	6	20
-	+	7	0
-	+	1	18
 
 > ~/backup_mysql.sh
 	"	1	0
