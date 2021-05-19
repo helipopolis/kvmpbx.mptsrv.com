@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~h
 # Последний Шаблон поиска:
-~MSle0~/Gosub
+~MSle0~/_72
 
 # Последняя строка для замены:
 $
@@ -27,6 +27,7 @@ $
 :Wq
 
 # Строка поиска, история (начиная от свежего к старому):
+?/_72
 ?/Gosub
 ?/monitor
 ?/sub-dial-simple-exten
@@ -76,7 +77,6 @@ $
 ??2990
 ??планер
 ?/administrator
-?/intercom
 
 # Выражение, история (начиная от свежего к старому):
 
@@ -107,18 +107,21 @@ $
 	0
 
 # Глобальные отметки:
-'0  6  20  /usr/src/letsencrypt-renew.sh
-'1  1  0  /etc/monit.d/ntpd
-'2  2  31  /etc/sysconfig/ntpd
-'3  1  0  /usr/lib/systemd/system/ntpd.service
-'4  2  0  /etc/monit.d/ntpd
-'5  1  0  /etc/ntp.conf
-'6  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
-'7  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
-'8  129  16  /etc/asterisk/extensions.conf
-'9  85  0  /etc/asterisk/extensions.conf
+'0  129  15  /etc/asterisk/extensions.conf
+'1  112  28  /etc/asterisk/func_odbc.conf
+'2  6  20  /usr/src/letsencrypt-renew.sh
+'3  1  0  /etc/monit.d/ntpd
+'4  2  31  /etc/sysconfig/ntpd
+'5  1  0  /usr/lib/systemd/system/ntpd.service
+'6  2  0  /etc/monit.d/ntpd
+'7  1  0  /etc/ntp.conf
+'8  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
+'9  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
 
 # Список прыжков (сначала более свежие):
+-'  129  15  /etc/asterisk/extensions.conf
+-'  112  28  /etc/asterisk/func_odbc.conf
+-'  83  20  /etc/asterisk/func_odbc.conf
 -'  6  20  /usr/src/letsencrypt-renew.sh
 -'  1  0  /usr/src/letsencrypt-renew.sh
 -'  1  0  /etc/monit.d/ntpd
@@ -129,7 +132,6 @@ $
 -'  1  0  /etc/ntp.conf
 -'  16  11  /etc/sysconfig/network-scripts/ifcfg-eth1
 -'  13  20  /etc/sysconfig/network-scripts/ifcfg-eth0
--'  129  16  /etc/asterisk/extensions.conf
 -'  85  0  /etc/asterisk/extensions.conf
 -'  80  14  /etc/asterisk/extensions.conf
 -'  65  15  /etc/asterisk/extensions.conf
@@ -213,78 +215,14 @@ $
 -'  1  0  /etc/httpd/conf.d/asterisk-cdr-viewer.conf
 -'  8  0  /etc/httpd/conf.d/addressbook.conf
 -'  9  0  /etc/httpd/conf.d/addressbook.conf
--'  21  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
--'  6  25  /etc/httpd/conf.d/pbx.seligdar.ru.conf
--'  11  61  /etc/httpd/conf.d/pbx.seligdar.ru.conf
--'  87  0  /etc/httpd/conf/httpd.conf
--'  127  0  /etc/httpd/conf/httpd.conf
+-'  112  28  /etc/asterisk/func_odbc.conf
 
 # История местных отметок (от более свежих к старым):
 
-> /usr/src/letsencrypt-renew.sh
-	"	6	20
-	^	6	21
-	.	6	0
-	+	7	20
-	+	8	58
-	+	10	18
-	+	11	20
-	+	12	0
-	+	1	19
-	+	6	0
-
-> /etc/monit.d/ntpd
-	"	1	0
-	^	1	18
-	.	1	17
-	+	4	0
-	+	2	45
-	+	3	43
-	+	1	17
-
-> /etc/sysconfig/ntpd
-	"	2	31
-	^	2	32
-	.	2	15
-	+	2	15
-
-> /usr/lib/systemd/system/ntpd.service
-	"	1	0
-
-> /etc/ntp.conf
-	"	1	0
-
-> /etc/sysconfig/network-scripts/ifcfg-eth1
-	"	16	11
-	^	16	12
-	.	16	11
-	+	17	0
-	+	21	13
-	+	8	0
-	+	4	15
-	+	8	0
-	+	16	11
-
-> /etc/sysconfig/network-scripts/ifcfg-eth0
-	"	13	20
-	^	13	21
-	.	13	20
-	+	5	10
-	+	4	13
-	+	8	0
-	+	9	8
-	+	8	0
-	+	4	15
-	+	11	10
-	+	5	10
-	+	14	0
-	+	4	15
-	+	13	20
-
 > /etc/asterisk/extensions.conf
-	"	129	16
-	^	129	17
-	.	129	16
+	"	129	15
+	^	129	16
+	.	129	15
 	+	717	0
 	+	717	10
 	+	717	110
@@ -384,7 +322,74 @@ $
 	+	596	12
 	+	80	14
 	+	85	0
-	+	129	16
+	+	129	15
+
+> /etc/asterisk/func_odbc.conf
+	"	112	28
+	.	112	0
+	+	107	32
+	+	111	29
+	+	112	0
+
+> /usr/src/letsencrypt-renew.sh
+	"	6	20
+	^	6	21
+	.	6	0
+	+	7	20
+	+	8	58
+	+	10	18
+	+	11	20
+	+	12	0
+	+	1	19
+	+	6	0
+
+> /etc/monit.d/ntpd
+	"	1	0
+	^	1	18
+	.	1	17
+	+	4	0
+	+	2	45
+	+	3	43
+	+	1	17
+
+> /etc/sysconfig/ntpd
+	"	2	31
+	^	2	32
+	.	2	15
+	+	2	15
+
+> /usr/lib/systemd/system/ntpd.service
+	"	1	0
+
+> /etc/ntp.conf
+	"	1	0
+
+> /etc/sysconfig/network-scripts/ifcfg-eth1
+	"	16	11
+	^	16	12
+	.	16	11
+	+	17	0
+	+	21	13
+	+	8	0
+	+	4	15
+	+	8	0
+	+	16	11
+
+> /etc/sysconfig/network-scripts/ifcfg-eth0
+	"	13	20
+	^	13	21
+	.	13	20
+	+	5	10
+	+	4	13
+	+	8	0
+	+	9	8
+	+	8	0
+	+	4	15
+	+	11	10
+	+	5	10
+	+	14	0
+	+	4	15
+	+	13	20
 
 > /var/www/yealink/y000000000077.cfg
 	"	501	0
@@ -879,9 +884,6 @@ $
 
 > /usr/src/asterisk-certified-16.8-cert5/cdr/:q
 	"	1	0
-
-> /etc/asterisk/func_odbc.conf
-	"	83	20
 
 > /etc/asterisk/cdr.conf
 	"	164	0
